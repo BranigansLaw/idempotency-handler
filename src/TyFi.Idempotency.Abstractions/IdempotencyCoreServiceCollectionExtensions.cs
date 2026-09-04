@@ -24,4 +24,26 @@ public static class IdempotencyCoreServiceCollectionExtensions
 
         return services;
     }
+
+    /// <summary>
+    /// Registers a custom <see cref="IIdempotencyStore"/> as the scoped store. Use this when
+    /// you back idempotency with your own storage (Cosmos DB, DynamoDB, SQL Server, …).
+    /// </summary>
+    /// <remarks>
+    /// A best-effort <see cref="NoOpIdempotencyUnitOfWork"/> is registered by default so the
+    /// store works without a transaction. If your store enlists in a business transaction,
+    /// register your own <see cref="IIdempotencyUnitOfWork"/> before calling this and it will
+    /// be kept (registration uses "try add").
+    /// </remarks>
+    /// <typeparam name="TStore">The custom store implementation.</typeparam>
+    public static IServiceCollection AddIdempotencyStore<TStore>(this IServiceCollection services)
+        where TStore : class, IIdempotencyStore
+    {
+        ArgumentNullException.ThrowIfNull(services);
+
+        services.TryAddScoped<IIdempotencyStore, TStore>();
+        services.TryAddSingleton<IIdempotencyUnitOfWork, NoOpIdempotencyUnitOfWork>();
+
+        return services;
+    }
 }

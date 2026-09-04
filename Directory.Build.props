@@ -27,7 +27,7 @@
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <!-- Version is supplied by CI (-p:Version=x.y.z); this is the local fallback. -->
-    <Version Condition="'$(Version)' == ''">0.1.0-dev</Version>
+    <Version Condition="'$(Version)' == ''">0.2.0-dev</Version>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(IsPackable)' != 'false'">
