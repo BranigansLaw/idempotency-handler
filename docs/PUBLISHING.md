@@ -42,6 +42,11 @@ The `NuGet/login` action needs your nuget.org **username (profile name), not you
 This is public information (it appears on your package pages), so store it as a plain
 **Actions variable**, not a secret.
 
+> **Use the policy _creator's_ personal username — not the organization.** Even when the
+> policy is _owned_ by an organization (so the org owns the packages), the `user` value must
+> be the individual nuget.org account that created the policy. Using the org name here fails
+> with `HTTP 401 … No matching trust policy owned by user '<name>'`.
+
 1. In GitHub: `idempotency-handler` repo → **Settings → Secrets and variables → Actions →
    Variables tab → New repository variable** (or set it once at the organization level and
    grant it to this repo).
