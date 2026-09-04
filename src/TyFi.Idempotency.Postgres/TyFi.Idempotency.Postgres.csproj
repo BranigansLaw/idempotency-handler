@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>TyFi.Idempotency.Postgres</PackageId>
+    <Description>Transactional (strong-tier) PostgreSQL idempotency store for TyFi.Idempotency, built on Npgsql. The ledger row commits in the same transaction as the command's side effect. Requires the host to provide an ambient IIdempotencyDbSession.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Npgsql" Version="8.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TyFi.Idempotency.Abstractions\TyFi.Idempotency.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\Script0001_IdempotencyKeys.sql" />
+    <None Include="Scripts\Script0001_IdempotencyKeys.sql" Pack="true" PackagePath="scripts\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>TyFi.Idempotency.Functions.Core</PackageId>
+    <Description>Shared Azure Functions isolated-worker glue for TyFi.Idempotency: the attribute catalog that scopes the middleware to functions marked [Idempotent] via cached reflection. Referenced by the HTTP-model adapter packages.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Core" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TyFi.Idempotency.Abstractions\TyFi.Idempotency.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

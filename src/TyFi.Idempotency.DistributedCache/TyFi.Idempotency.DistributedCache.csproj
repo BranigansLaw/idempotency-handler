@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>TyFi.Idempotency.DistributedCache</PackageId>
+    <Description>Best-effort idempotency store for TyFi.Idempotency backed by any IDistributedCache (e.g. Azure Table Storage, Redis). Provides replay without the transactional tier's atomic-claim or transactional-coupling guarantees; see the XML docs and README.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TyFi.Idempotency.Abstractions\TyFi.Idempotency.Abstractions.csproj" />
+  </ItemGroup>
+
+</Project>

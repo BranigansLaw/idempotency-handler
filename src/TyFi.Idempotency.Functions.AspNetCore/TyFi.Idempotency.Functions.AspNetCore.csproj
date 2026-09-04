@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>TyFi.Idempotency.Functions.AspNetCore</PackageId>
+    <Description>Idempotency middleware for Azure Functions isolated worker using the ASP.NET Core integration model (FunctionsApplication.CreateBuilder + ConfigureFunctionsWebApplication; HttpRequest/IActionResult triggers). Adds builder.UseIdempotency().</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TyFi.Idempotency.Functions.Core\TyFi.Idempotency.Functions.Core.csproj" />
+  </ItemGroup>
+
+</Project>

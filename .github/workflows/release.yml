@@ -1,0 +1,66 @@
+name: Release
+
+# Publishes every TyFi.Idempotency.* package to NuGet.org when you push a version tag,
+# e.g. `git tag v0.2.0 && git push origin v0.2.0`. The tag (minus the leading `v`) becomes
+# the package version.
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  publish:
+    name: Pack & Publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # Enables GitHub OIDC token issuance for NuGet trusted publishing — no stored API key.
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Derive version from tag
+        id: version
+        run: echo "value=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build -c Release --no-restore -p:Version=${{ steps.version.outputs.value }}
+
+      - name: Test
+        run: dotnet test -c Release --no-build --verbosity normal
+
+      - name: Pack
+        run: >
+          dotnet pack -c Release --no-build
+          -p:Version=${{ steps.version.outputs.value }}
+          -o artifacts
+
+      # Trusted publishing: exchange the GitHub OIDC token for a short-lived NuGet API key
+      # (valid ~1 hour), requested immediately before the push. Configure the matching
+      # policy on nuget.org and set the NUGET_USER variable — see docs/PUBLISHING.md.
+      - name: NuGet login (OIDC → short-lived key)
+        id: nuget-login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ vars.NUGET_USER }}
+
+      - name: Push to NuGet.org
+        run: >
+          dotnet nuget push "artifacts/*.nupkg"
+          --api-key "${{ steps.nuget-login.outputs.NUGET_API_KEY }}"
+          --source https://api.nuget.org/v3/index.json
+          --skip-duplicate
+
+      - name: Upload packages as build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nupkg
+          path: artifacts/*.nupkg

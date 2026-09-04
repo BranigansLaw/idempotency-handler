@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>TyFi.Idempotency.Functions.Worker</PackageId>
+    <Description>Idempotency middleware for Azure Functions isolated worker using the built-in HTTP model (ConfigureFunctionsWorkerDefaults; HttpRequestData/HttpResponseData triggers). Adds builder.UseIdempotency().</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http" Version="3.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TyFi.Idempotency.Functions.Core\TyFi.Idempotency.Functions.Core.csproj" />
+  </ItemGroup>
+
+</Project>
