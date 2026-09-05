@@ -38,7 +38,8 @@ public sealed class IdempotencyMiddleware : IFunctionsWorkerMiddleware
         }
 
         var executor = context.InstanceServices.GetRequiredService<IIdempotencyExecutor>();
-        var exchange = new HttpContextIdempotencyExchange(http);
+        var exchange = new HttpContextIdempotencyExchange(
+            new FunctionContextInvocationResultAccessor(context), http);
         await executor.ExecuteAsync(exchange, options, () => next(context), context.CancellationToken);
     }
 }

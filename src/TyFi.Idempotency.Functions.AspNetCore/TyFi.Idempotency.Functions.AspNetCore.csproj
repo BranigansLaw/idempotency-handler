@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <InternalsVisibleTo Include="TyFi.Idempotency.Functions.AspNetCore.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TyFi.Idempotency.Functions.Core\TyFi.Idempotency.Functions.Core.csproj" />
   </ItemGroup>
 
