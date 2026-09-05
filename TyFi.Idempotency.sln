@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TyFi.Idempotency.Abstractio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TyFi.Idempotency.Postgres.Tests", "tests\TyFi.Idempotency.Postgres.Tests\TyFi.Idempotency.Postgres.Tests.csproj", "{F3011F63-B93A-4C75-9BA4-8BBBA6F7B121}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TyFi.Idempotency.Functions.AspNetCore.Tests", "tests\TyFi.Idempotency.Functions.AspNetCore.Tests\TyFi.Idempotency.Functions.AspNetCore.Tests.csproj", "{14762453-1587-4B9C-9F3C-2E4167CB4F00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +66,10 @@ Global
 		{F3011F63-B93A-4C75-9BA4-8BBBA6F7B121}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3011F63-B93A-4C75-9BA4-8BBBA6F7B121}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3011F63-B93A-4C75-9BA4-8BBBA6F7B121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14762453-1587-4B9C-9F3C-2E4167CB4F00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14762453-1587-4B9C-9F3C-2E4167CB4F00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14762453-1587-4B9C-9F3C-2E4167CB4F00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14762453-1587-4B9C-9F3C-2E4167CB4F00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{8A698589-E7BE-4A8B-9513-278DAB74016C} = {AE160D94-EB82-4B1F-8611-05770B595C01}
@@ -74,5 +80,6 @@ Global
 		{304FA449-5076-4282-93B4-2E7C810AC6BD} = {AE160D94-EB82-4B1F-8611-05770B595C01}
 		{0312EA0E-1F10-4B90-A9C5-0FFC7ADDFEE0} = {0CF4992C-4331-431E-A475-857FAAC4F6AF}
 		{F3011F63-B93A-4C75-9BA4-8BBBA6F7B121} = {0CF4992C-4331-431E-A475-857FAAC4F6AF}
+		{14762453-1587-4B9C-9F3C-2E4167CB4F00} = {0CF4992C-4331-431E-A475-857FAAC4F6AF}
 	EndGlobalSection
 EndGlobal
