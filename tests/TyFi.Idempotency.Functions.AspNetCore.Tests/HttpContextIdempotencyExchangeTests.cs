@@ -183,6 +183,7 @@ public sealed class HttpContextIdempotencyExchangeTests
 
         Assert.Equal(204, http.Response.StatusCode);
         Assert.True(string.IsNullOrEmpty(http.Response.ContentType));
+        Assert.Null(http.Response.ContentLength);
     }
 
     [Fact]

@@ -52,7 +52,12 @@ internal sealed class CapturedResponseResult : IActionResult
                 response.ContentType = _contentType;
             }
 
-            response.ContentLength = _body.Length;
+            // 1xx and 204 responses must not carry Content-Length; Kestrel rejects it.
+            if (_statusCode >= StatusCodes.Status200OK &&
+                _statusCode != StatusCodes.Status204NoContent)
+            {
+                response.ContentLength = _body.Length;
+            }
 
             foreach (KeyValuePair<string, StringValues> header in _headers)
             {

@@ -91,6 +91,7 @@ internal sealed class HttpContextIdempotencyExchange : IIdempotencyExchange
         var scratch = new DefaultHttpContext { RequestServices = _http.RequestServices };
         scratch.RequestAborted = cancellationToken;
         scratch.Request.Method = _http.Request.Method;
+        scratch.Request.PathBase = _http.Request.PathBase;
         scratch.Request.Path = _http.Request.Path;
         scratch.Request.QueryString = _http.Request.QueryString;
         CopyNegotiationHeaders(_http.Request.Headers, scratch.Request.Headers);
